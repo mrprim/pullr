@@ -1,0 +1,20 @@
+{
+  "name": "pullr",
+  "version": "0.0.0",
+  "description": "A comic pull-list app",
+  "dependencies": {
+    "style-loader": "~0.13.1",
+    "css-loader": "~0.23.1",
+    "jquery": "~2.2.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrprim/pullr.git"
+  },
+  "author": "Sergio Rodriguez",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/mrprim/pullr/issues"
+  }
+}
