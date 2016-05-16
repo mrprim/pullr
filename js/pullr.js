@@ -1,36 +1,42 @@
-﻿var _apiKey = ;
-var _store_date = "";
-var _pagesize = 100;
-var _comics = [];
-var _user = {};
-var users = require("./users.js");
+﻿var users = require("./users.js");
 var _comictypes = {
     trades: ["TPB","HC","SC","HC/SC","Volume","Vol.","GN"]
 };
 
-var pullr = require('service.js');
+var pullr = {};
+pullr.api = require('./api.js');
 
 
+require('./widgets/comicList.js');
 
 $.fn.pullr = function(options) {
-    var opts = $.extend({}, $.fn.pullr.defaults, options);
+    var self = this,
+        opts = $.extend({}, $.fn.pullr.defaults, options);
 
     function build() {
-
+        self.addClass('pullr');
+        buildList();
+        load();
     };
+
+    function buildList() {
+        self.list = $('<div/>').comicList().appendTo(self);
+    };
+
+    function load(storeDate) {
+        pullr.api.getComics(storeDate).done(function(resp) {
+            self.list.set();
+        });
+    };
+
+    build();
+
+    return self;
 };
 
-$.fn.pullr.defaults = {
-    apiBaseUrl: "https://www.comicvine.com/api/issues/?",
-    apiKey: "bbcc02c540fae8bc000887561a696eb2a0a851f9",
-    pageSize: 100,
-    apiFormat: "jsonp",
-    apiSort: "volume:asc",
-    apiJsonCallback: "?",
-    apiCallback: "?",
-    apiDataformat: "json",
-    apiDataType: "jsonp"
-};
+$.fn.pullr.defaults = {};
+
+module.exports = pullr;
 /*
 $(function($){
     //OnPageLoad
