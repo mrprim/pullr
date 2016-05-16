@@ -6,7 +6,8 @@ class PullrApp extends React.Component {
         super(props);
         this.state = {likesCount : 0};
         this.onLike = this.onLike.bind(this);
-    },
+    }
+    
     render () {
         return <p> Hello React!</p>;
     }
