@@ -1,4 +1,7 @@
+require('./utils.js');
+
 var $ = require('jquery'),
+    moment = require('moment'),
     api = api || {},
     apiDefaults = {
         apiBaseUrl: "https://www.comicvine.com/api/issues/?",
@@ -13,13 +16,23 @@ var $ = require('jquery'),
     };
 
 api.getComics = function(storeDate, options) {
-    storeDate = storeDate || '2016-05-11';
+    storeDate = getStoreDate(storeDate);
     options = options || apiDefaults;
 
     var comicResponse = [],
         comics = [],
         totalPages,
         dfd = $.Deferred();
+
+    function getStoreDate(date) {
+        var ret = new Date(date||new Date());
+        if (ret.getDay() == 2) {
+            ret.setDate(ret.getDate() + (3 - 1 - ret.getDay() + 7) % 7 + 1);
+        } else {
+            ret.setDate(ret.getDate() + (3 - 1 - ret.getDay() + 7) % 7 + 1 - 7);
+        };
+        return ret.yyyymmdd();
+    };
 
     function getData(page) {
         page = page || 1;
@@ -61,7 +74,10 @@ api.getComics = function(storeDate, options) {
             getData(page + 1);
         } else {
             processFinalData();
-            dfd.resolve(comics.sort(sortBySeriesTitle));
+            dfd.resolve({
+                storeDate: storeDate,
+                comics: comics.sort(sortBySeriesTitle)
+            });
         }
     }
 

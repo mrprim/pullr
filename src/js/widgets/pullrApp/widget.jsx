@@ -27,7 +27,8 @@ module.exports = React.createClass({
 		var self = this;
 		api.getComics().done(function(resp) {
 			self.setState({
-				comics: resp,
+				storeDate: resp.storeDate,
+				comics: resp.comics,
 				mode: 'list'
 			});
 		});
@@ -36,6 +37,7 @@ module.exports = React.createClass({
     	return (
     		<div className="pullrApp">
 				<h1>{this.state.appName}</h1>
+				<h3>{this.state.storeDate}</h3>
 				{this.handleWidgetState()}
 			</div>
     	);

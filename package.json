@@ -21,6 +21,7 @@
     "jquery": "^2.2.3",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "style-loader": "~0.13.1",
@@ -28,7 +29,7 @@
     "webpack": "^1.13.0"
   },
   "scripts": {
-    "dev": "webpack -d --watch | http-server",
+    "dev": "http-server | webpack -d --watch",
     "build": "webpack -p | http-server"
   },
   "devDependencies": {},
