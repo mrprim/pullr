@@ -1,4 +1,4 @@
-require('./utils.js');
+require('./utils/extensions/dateExtensions.js');
 
 var $ = require('jquery'),
     moment = require('moment'),
