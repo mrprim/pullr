@@ -9,22 +9,32 @@ var api = require('../../api.js'),
 
 module.exports = React.createClass({
 	getInitialState: function(){
-		this.handleLoad();
 		return {
 			appName: 'Pullr',
-			comics: [],
 			mode: 'loading'
 		}
 	},
+
+	componentDidMount: function() {
+		var self = this;
+
+		self.load();
+	},
+
 	handleWidgetState: function() {
-		if(this.state.mode === 'loading') {
+		var self = this,
+			state = self.state;
+
+		if(state.mode === 'loading') {
 			return <h1>LOADING</h1>
 		} else {
-			return <ComicList comics={this.state.comics} />;
+			return <ComicList comics={state.comics} />;
 		}
 	},
-	handleLoad: function() {
+
+	load: function() {
 		var self = this;
+
 		api.getComics().done(function(resp) {
 			self.setState({
 				storeDate: resp.storeDate,
@@ -33,12 +43,16 @@ module.exports = React.createClass({
 			});
 		});
 	},
+
 	render: function() {
+		var self = this,
+			state = self. state;
+
     	return (
     		<div className="pullrApp">
-				<h1>{this.state.appName}</h1>
-				<h3>{this.state.storeDate}</h3>
-				{this.handleWidgetState()}
+				<h1>{state.appName}</h1>
+				<h3>{state.storeDate}</h3>
+				{self.handleWidgetState()}
 			</div>
     	);
   	}
