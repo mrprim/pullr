@@ -95,7 +95,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".hidden {\n\tdisplay:none;\n}", ""]);
 	
 	// exports
 
@@ -24425,7 +24425,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var $ = __webpack_require__(/*! jquery */ 6),
-	    PullrApp = __webpack_require__(/*! ./components/pullrApp/widget.jsx */ 298);
+	    PullrApp = __webpack_require__(/*! ./components/pullrApp/widget.jsx */ 281);
 	
 	(0, _reactDom.render)(_react2.default.createElement(PullrApp, null), document.getElementById('pullr'));
 	
@@ -24897,13 +24897,13 @@
 	};
 	
 	module.exports = React;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 116 */
-/*!******************************!*\
-  !*** ./~/process/browser.js ***!
-  \******************************/
+/*!**********************************************************!*\
+  !*** (webpack)/~/node-libs-browser/~/process/browser.js ***!
+  \**********************************************************/
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -25004,9 +25004,9 @@
 
 /***/ },
 /* 117 */
-/*!**********************************!*\
-  !*** ./~/object-assign/index.js ***!
-  \**********************************/
+/*!******************************************!*\
+  !*** ./~/react/~/object-assign/index.js ***!
+  \******************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25411,13 +25411,13 @@
 	};
 	
 	module.exports = PooledClass;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 120 */
-/*!*********************************!*\
-  !*** ./~/fbjs/lib/invariant.js ***!
-  \*********************************/
+/*!*****************************************!*\
+  !*** ./~/react/~/fbjs/lib/invariant.js ***!
+  \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25469,7 +25469,7 @@
 	}
 	
 	module.exports = invariant;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 121 */
@@ -25765,7 +25765,7 @@
 	};
 	
 	module.exports = ReactElement;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 122 */
@@ -25808,9 +25808,9 @@
 
 /***/ },
 /* 123 */
-/*!*******************************!*\
-  !*** ./~/fbjs/lib/warning.js ***!
-  \*******************************/
+/*!***************************************!*\
+  !*** ./~/react/~/fbjs/lib/warning.js ***!
+  \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25869,13 +25869,13 @@
 	}
 	
 	module.exports = warning;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 124 */
-/*!*************************************!*\
-  !*** ./~/fbjs/lib/emptyFunction.js ***!
-  \*************************************/
+/*!*********************************************!*\
+  !*** ./~/react/~/fbjs/lib/emptyFunction.js ***!
+  \*********************************************/
 /***/ function(module, exports) {
 
 	"use strict";
@@ -25947,7 +25947,7 @@
 	}
 	
 	module.exports = canDefineProperty;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 126 */
@@ -26114,7 +26114,7 @@
 	}
 	
 	module.exports = traverseAllChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 127 */
@@ -26358,7 +26358,7 @@
 	}
 	
 	module.exports = ReactComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 130 */
@@ -26462,7 +26462,7 @@
 	};
 	
 	module.exports = ReactNoopUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 131 */
@@ -26567,7 +26567,7 @@
 	ReactDebugTool.addDevtool(ReactInvalidSetStateWarningDevTool);
 	
 	module.exports = ReactDebugTool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 133 */
@@ -26612,13 +26612,13 @@
 	};
 	
 	module.exports = ReactInvalidSetStateWarningDevTool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 134 */
-/*!***********************************!*\
-  !*** ./~/fbjs/lib/emptyObject.js ***!
-  \***********************************/
+/*!*******************************************!*\
+  !*** ./~/react/~/fbjs/lib/emptyObject.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26640,7 +26640,7 @@
 	}
 	
 	module.exports = emptyObject;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 135 */
@@ -27372,7 +27372,7 @@
 	};
 	
 	module.exports = ReactClass;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 136 */
@@ -27406,9 +27406,9 @@
 
 /***/ },
 /* 137 */
-/*!*********************************!*\
-  !*** ./~/fbjs/lib/keyMirror.js ***!
-  \*********************************/
+/*!*****************************************!*\
+  !*** ./~/react/~/fbjs/lib/keyMirror.js ***!
+  \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27458,7 +27458,7 @@
 	};
 	
 	module.exports = keyMirror;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 138 */
@@ -27491,13 +27491,13 @@
 	}
 	
 	module.exports = ReactPropTypeLocationNames;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 139 */
-/*!*****************************!*\
-  !*** ./~/fbjs/lib/keyOf.js ***!
-  \*****************************/
+/*!*************************************!*\
+  !*** ./~/react/~/fbjs/lib/keyOf.js ***!
+  \*************************************/
 /***/ function(module, exports) {
 
 	"use strict";
@@ -27718,7 +27718,7 @@
 	}, createDOMFactory);
 	
 	module.exports = ReactDOMFactories;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 141 */
@@ -28008,13 +28008,13 @@
 	};
 	
 	module.exports = ReactElementValidator;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 142 */
-/*!*********************************!*\
-  !*** ./~/fbjs/lib/mapObject.js ***!
-  \*********************************/
+/*!*****************************************!*\
+  !*** ./~/react/~/fbjs/lib/mapObject.js ***!
+  \*****************************************/
 /***/ function(module, exports) {
 
 	/**
@@ -28518,7 +28518,7 @@
 	}
 	
 	module.exports = onlyChild;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 146 */
@@ -28643,7 +28643,7 @@
 	}
 	
 	module.exports = React;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 148 */
@@ -28838,7 +28838,7 @@
 	};
 	
 	module.exports = ReactDOMComponentTree;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 149 */
@@ -29060,7 +29060,7 @@
 	};
 	
 	module.exports = DOMProperty;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 150 */
@@ -29188,7 +29188,7 @@
 	module.exports = {
 	  inject: inject
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 152 */
@@ -29835,7 +29835,7 @@
 	};
 	
 	module.exports = EventPropagators;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 155 */
@@ -30079,7 +30079,7 @@
 	};
 	
 	module.exports = EventPluginHub;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 156 */
@@ -30329,7 +30329,7 @@
 	};
 	
 	module.exports = EventPluginRegistry;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 157 */
@@ -30565,7 +30565,7 @@
 	};
 	
 	module.exports = EventPluginUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 158 */
@@ -30650,7 +30650,7 @@
 	}
 	
 	module.exports = ReactErrorUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 159 */
@@ -30718,7 +30718,7 @@
 	}
 	
 	module.exports = accumulateInto;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 160 */
@@ -30760,9 +30760,9 @@
 
 /***/ },
 /* 161 */
-/*!********************************************!*\
-  !*** ./~/fbjs/lib/ExecutionEnvironment.js ***!
-  \********************************************/
+/*!****************************************************!*\
+  !*** ./~/react/~/fbjs/lib/ExecutionEnvironment.js ***!
+  \****************************************************/
 /***/ function(module, exports) {
 
 	/**
@@ -31257,7 +31257,7 @@
 	    process.env.NODE_ENV !== 'production' ? warning(warningCondition, 'This synthetic event is reused for performance reasons. If you\'re seeing this, ' + 'you\'re %s `%s` on a released/nullified synthetic event. %s. ' + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
 	  }
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 166 */
@@ -31885,7 +31885,7 @@
 	};
 	
 	module.exports = ReactUpdates;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 169 */
@@ -31999,7 +31999,7 @@
 	PooledClass.addPoolingTo(CallbackQueue);
 	
 	module.exports = CallbackQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 170 */
@@ -32133,7 +32133,7 @@
 	}
 	
 	module.exports = ReactPerf;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 172 */
@@ -32272,7 +32272,7 @@
 	};
 	
 	module.exports = ReactReconciler;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 173 */
@@ -32459,7 +32459,7 @@
 	};
 	
 	module.exports = ReactOwner;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 175 */
@@ -32699,7 +32699,7 @@
 	};
 	
 	module.exports = Transaction;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 176 */
@@ -34166,13 +34166,13 @@
 	};
 	
 	module.exports = Danger;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 194 */
-/*!*********************************************!*\
-  !*** ./~/fbjs/lib/createNodesFromMarkup.js ***!
-  \*********************************************/
+/*!*****************************************************!*\
+  !*** ./~/react/~/fbjs/lib/createNodesFromMarkup.js ***!
+  \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -34258,13 +34258,13 @@
 	}
 	
 	module.exports = createNodesFromMarkup;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 195 */
-/*!********************************************!*\
-  !*** ./~/fbjs/lib/createArrayFromMixed.js ***!
-  \********************************************/
+/*!****************************************************!*\
+  !*** ./~/react/~/fbjs/lib/createArrayFromMixed.js ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -34393,13 +34393,13 @@
 	}
 	
 	module.exports = createArrayFromMixed;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 196 */
-/*!*************************************!*\
-  !*** ./~/fbjs/lib/getMarkupWrap.js ***!
-  \*************************************/
+/*!*********************************************!*\
+  !*** ./~/react/~/fbjs/lib/getMarkupWrap.js ***!
+  \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -34496,7 +34496,7 @@
 	}
 	
 	module.exports = getMarkupWrap;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 197 */
@@ -35501,7 +35501,7 @@
 	_assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mixin);
 	
 	module.exports = ReactDOMComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 200 */
@@ -35537,9 +35537,9 @@
 
 /***/ },
 /* 201 */
-/*!*********************************!*\
-  !*** ./~/fbjs/lib/focusNode.js ***!
-  \*********************************/
+/*!*****************************************!*\
+  !*** ./~/react/~/fbjs/lib/focusNode.js ***!
+  \*****************************************/
 /***/ function(module, exports) {
 
 	/**
@@ -35781,7 +35781,7 @@
 	});
 	
 	module.exports = CSSPropertyOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 203 */
@@ -35941,9 +35941,9 @@
 
 /***/ },
 /* 204 */
-/*!*****************************************!*\
-  !*** ./~/fbjs/lib/camelizeStyleName.js ***!
-  \*****************************************/
+/*!*************************************************!*\
+  !*** ./~/react/~/fbjs/lib/camelizeStyleName.js ***!
+  \*************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35988,9 +35988,9 @@
 
 /***/ },
 /* 205 */
-/*!********************************!*\
-  !*** ./~/fbjs/lib/camelize.js ***!
-  \********************************/
+/*!****************************************!*\
+  !*** ./~/react/~/fbjs/lib/camelize.js ***!
+  \****************************************/
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36109,13 +36109,13 @@
 	}
 	
 	module.exports = dangerousStyleValue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 207 */
-/*!******************************************!*\
-  !*** ./~/fbjs/lib/hyphenateStyleName.js ***!
-  \******************************************/
+/*!**************************************************!*\
+  !*** ./~/react/~/fbjs/lib/hyphenateStyleName.js ***!
+  \**************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36159,9 +36159,9 @@
 
 /***/ },
 /* 208 */
-/*!*********************************!*\
-  !*** ./~/fbjs/lib/hyphenate.js ***!
-  \*********************************/
+/*!*****************************************!*\
+  !*** ./~/react/~/fbjs/lib/hyphenate.js ***!
+  \*****************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36199,9 +36199,9 @@
 
 /***/ },
 /* 209 */
-/*!*****************************************!*\
-  !*** ./~/fbjs/lib/memoizeStringOnly.js ***!
-  \*****************************************/
+/*!*************************************************!*\
+  !*** ./~/react/~/fbjs/lib/memoizeStringOnly.js ***!
+  \*************************************************/
 /***/ function(module, exports) {
 
 	/**
@@ -36484,7 +36484,7 @@
 	});
 	
 	module.exports = DOMPropertyOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 212 */
@@ -36578,7 +36578,7 @@
 	ReactDOMDebugTool.addDevtool(ReactDOMUnknownPropertyDevtool);
 	
 	module.exports = ReactDOMDebugTool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 214 */
@@ -36651,7 +36651,7 @@
 	};
 	
 	module.exports = ReactDOMUnknownPropertyDevtool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 215 */
@@ -37463,7 +37463,7 @@
 	}
 	
 	module.exports = ReactDOMInput;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 222 */
@@ -37605,7 +37605,7 @@
 	};
 	
 	module.exports = LinkedValueUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 223 */
@@ -37723,7 +37723,7 @@
 	};
 	
 	module.exports = ReactDOMOption;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 224 */
@@ -37945,7 +37945,7 @@
 	}
 	
 	module.exports = ReactDOMSelect;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 225 */
@@ -38096,7 +38096,7 @@
 	}
 	
 	module.exports = ReactDOMTextarea;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 226 */
@@ -38507,7 +38507,7 @@
 	};
 	
 	module.exports = ReactMultiChild;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 227 */
@@ -38567,7 +38567,7 @@
 	};
 	
 	module.exports = ReactComponentEnvironment;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 228 */
@@ -38701,7 +38701,7 @@
 	};
 	
 	module.exports = ReactChildReconciler;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 229 */
@@ -38821,7 +38821,7 @@
 	}
 	
 	module.exports = instantiateReactComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 230 */
@@ -39624,7 +39624,7 @@
 	};
 	
 	module.exports = ReactCompositeComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 231 */
@@ -39726,7 +39726,7 @@
 	};
 	
 	module.exports = ReactNodeTypes;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 233 */
@@ -39950,7 +39950,7 @@
 	};
 	
 	module.exports = ReactUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 234 */
@@ -40142,7 +40142,7 @@
 	};
 	
 	module.exports = ReactNativeComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 237 */
@@ -40200,13 +40200,13 @@
 	}
 	
 	module.exports = flattenChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 238 */
-/*!************************************!*\
-  !*** ./~/fbjs/lib/shallowEqual.js ***!
-  \************************************/
+/*!********************************************!*\
+  !*** ./~/react/~/fbjs/lib/shallowEqual.js ***!
+  \********************************************/
 /***/ function(module, exports) {
 
 	/**
@@ -40652,7 +40652,7 @@
 	}
 	
 	module.exports = validateDOMNesting;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 240 */
@@ -40863,7 +40863,7 @@
 	  traverseTwoPhase: traverseTwoPhase,
 	  traverseEnterLeave: traverseEnterLeave
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 242 */
@@ -41041,7 +41041,7 @@
 	});
 	
 	module.exports = ReactDOMTextComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 243 */
@@ -41286,9 +41286,9 @@
 
 /***/ },
 /* 245 */
-/*!*************************************!*\
-  !*** ./~/fbjs/lib/EventListener.js ***!
-  \*************************************/
+/*!*********************************************!*\
+  !*** ./~/react/~/fbjs/lib/EventListener.js ***!
+  \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -41374,13 +41374,13 @@
 	};
 	
 	module.exports = EventListener;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 246 */
-/*!**************************************************!*\
-  !*** ./~/fbjs/lib/getUnboundedScrollPosition.js ***!
-  \**************************************************/
+/*!**********************************************************!*\
+  !*** ./~/react/~/fbjs/lib/getUnboundedScrollPosition.js ***!
+  \**********************************************************/
 /***/ function(module, exports) {
 
 	/**
@@ -42074,9 +42074,9 @@
 
 /***/ },
 /* 252 */
-/*!************************************!*\
-  !*** ./~/fbjs/lib/containsNode.js ***!
-  \************************************/
+/*!********************************************!*\
+  !*** ./~/react/~/fbjs/lib/containsNode.js ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42125,9 +42125,9 @@
 
 /***/ },
 /* 253 */
-/*!**********************************!*\
-  !*** ./~/fbjs/lib/isTextNode.js ***!
-  \**********************************/
+/*!******************************************!*\
+  !*** ./~/react/~/fbjs/lib/isTextNode.js ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42157,9 +42157,9 @@
 
 /***/ },
 /* 254 */
-/*!******************************!*\
-  !*** ./~/fbjs/lib/isNode.js ***!
-  \******************************/
+/*!**************************************!*\
+  !*** ./~/react/~/fbjs/lib/isNode.js ***!
+  \**************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42187,9 +42187,9 @@
 
 /***/ },
 /* 255 */
-/*!****************************************!*\
-  !*** ./~/fbjs/lib/getActiveElement.js ***!
-  \****************************************/
+/*!************************************************!*\
+  !*** ./~/react/~/fbjs/lib/getActiveElement.js ***!
+  \************************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43373,7 +43373,7 @@
 	};
 	
 	module.exports = SimpleEventPlugin;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 259 */
@@ -44301,7 +44301,7 @@
 	};
 	
 	module.exports = ReactDefaultPerf;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 270 */
@@ -45006,7 +45006,7 @@
 	});
 	
 	module.exports = ReactMount;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 272 */
@@ -45048,7 +45048,7 @@
 	}
 	
 	module.exports = ReactDOMContainerInfo;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 273 */
@@ -45187,9 +45187,9 @@
 
 /***/ },
 /* 276 */
-/*!**************************************!*\
-  !*** ./~/fbjs/lib/performanceNow.js ***!
-  \**************************************/
+/*!**********************************************!*\
+  !*** ./~/react/~/fbjs/lib/performanceNow.js ***!
+  \**********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45228,9 +45228,9 @@
 
 /***/ },
 /* 277 */
-/*!***********************************!*\
-  !*** ./~/fbjs/lib/performance.js ***!
-  \***********************************/
+/*!*******************************************!*\
+  !*** ./~/react/~/fbjs/lib/performance.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45319,7 +45319,7 @@
 	}
 	
 	module.exports = findDOMNode;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 116)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! (webpack)/~/node-libs-browser/~/process/browser.js */ 116)))
 
 /***/ },
 /* 279 */
@@ -45384,9 +45384,140 @@
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 281 */,
-/* 282 */,
-/* 283 */,
+/* 281 */
+/*!***********************************************!*\
+  !*** ./src/js/components/pullrApp/widget.jsx ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(/*! react */ 114);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 146);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(/*! ./widget.css */ 282);
+	
+	var api = __webpack_require__(/*! ../../api.js */ 284),
+	    ComicList = __webpack_require__(/*! ../comicList/widget.jsx */ 286),
+	    loadScreen = __webpack_require__(/*! ../loadScreen/widget.jsx */ 295);
+	
+	module.exports = _react2.default.createClass({
+		displayName: 'exports',
+	
+		getInitialState: function getInitialState() {
+			return {
+				appName: 'Pullr',
+				mode: 'loading'
+			};
+		},
+	
+		componentDidMount: function componentDidMount() {
+			var self = this;
+	
+			self.load();
+		},
+	
+		handleWidgetState: function handleWidgetState() {
+			var self = this,
+			    state = self.state;
+	
+			if (state.mode === 'loading') {
+				return _react2.default.createElement(
+					'h1',
+					null,
+					'LOADING'
+				);
+			} else {
+				return _react2.default.createElement(ComicList, { comics: state.comics });
+			}
+		},
+	
+		load: function load() {
+			var self = this;
+	
+			api.getComics().done(function (resp) {
+				self.setState({
+					storeDate: resp.storeDate,
+					comics: resp.comics,
+					mode: 'list'
+				});
+			});
+		},
+	
+		render: function render() {
+			var self = this,
+			    state = self.state;
+	
+			return _react2.default.createElement(
+				'div',
+				{ className: 'pullrApp' },
+				_react2.default.createElement(
+					'h1',
+					null,
+					state.appName
+				),
+				_react2.default.createElement(
+					'h3',
+					null,
+					state.storeDate
+				),
+				self.handleWidgetState()
+			);
+		}
+	});
+
+/***/ },
+/* 282 */
+/*!***********************************************!*\
+  !*** ./src/js/components/pullrApp/widget.css ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 283);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./widget.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./widget.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 283 */
+/*!**************************************************************!*\
+  !*** ./~/css-loader!./src/js/components/pullrApp/widget.css ***!
+  \**************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".pullrApp {\n\n}", ""]);
+	
+	// exports
+
+
+/***/ },
 /* 284 */
 /*!***********************!*\
   !*** ./src/js/api.js ***!
@@ -45395,7 +45526,7 @@
 
 	'use strict';
 	
-	__webpack_require__(/*! ./utils/extensions/dateExtensions.js */ 313);
+	__webpack_require__(/*! ./utils/extensions/dateExtensions.js */ 285);
 	
 	var $ = __webpack_require__(/*! jquery */ 6),
 	    moment = __webpack_require__(/*! moment */ 9),
@@ -45521,154 +45652,23 @@
 	module.exports = api;
 
 /***/ },
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */
-/*!***********************************************!*\
-  !*** ./src/js/components/pullrApp/widget.jsx ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
+/* 285 */
+/*!***************************************************!*\
+  !*** ./src/js/utils/extensions/dateExtensions.js ***!
+  \***************************************************/
+/***/ function(module, exports) {
 
 	'use strict';
 	
-	var _react = __webpack_require__(/*! react */ 114);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 146);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	__webpack_require__(/*! ./widget.css */ 299);
-	
-	var api = __webpack_require__(/*! ../../api.js */ 284),
-	    ComicList = __webpack_require__(/*! ../comicList/widget.jsx */ 301),
-	    loadScreen = __webpack_require__(/*! ../loadScreen/widget.jsx */ 310);
-	
-	module.exports = _react2.default.createClass({
-		displayName: 'exports',
-	
-		getInitialState: function getInitialState() {
-			return {
-				appName: 'Pullr',
-				mode: 'loading'
-			};
-		},
-	
-		componentDidMount: function componentDidMount() {
-			var self = this;
-	
-			self.load();
-		},
-	
-		handleWidgetState: function handleWidgetState() {
-			var self = this,
-			    state = self.state;
-	
-			if (state.mode === 'loading') {
-				return _react2.default.createElement(
-					'h1',
-					null,
-					'LOADING'
-				);
-			} else {
-				return _react2.default.createElement(ComicList, { comics: state.comics });
-			}
-		},
-	
-		load: function load() {
-			var self = this;
-	
-			api.getComics().done(function (resp) {
-				self.setState({
-					storeDate: resp.storeDate,
-					comics: resp.comics,
-					mode: 'list'
-				});
-			});
-		},
-	
-		render: function render() {
-			var self = this,
-			    state = self.state;
-	
-			return _react2.default.createElement(
-				'div',
-				{ className: 'pullrApp' },
-				_react2.default.createElement(
-					'h1',
-					null,
-					state.appName
-				),
-				_react2.default.createElement(
-					'h3',
-					null,
-					state.storeDate
-				),
-				self.handleWidgetState()
-			);
-		}
-	});
+	Date.prototype.yyyymmdd = function () {
+	    var yyyy = this.getFullYear().toString();
+	    var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+	    var dd = this.getDate().toString();
+	    return yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]); // padding
+	};
 
 /***/ },
-/* 299 */
-/*!***********************************************!*\
-  !*** ./src/js/components/pullrApp/widget.css ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 300);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./widget.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./widget.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 300 */
-/*!**************************************************************!*\
-  !*** ./~/css-loader!./src/js/components/pullrApp/widget.css ***!
-  \**************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".pullrApp {\n\n}", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 301 */
+/* 286 */
 /*!************************************************!*\
   !*** ./src/js/components/comicList/widget.jsx ***!
   \************************************************/
@@ -45684,9 +45684,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 302);
+	__webpack_require__(/*! ./widget.css */ 287);
 	
-	var ComicListItem = __webpack_require__(/*! ../comicListItem/widget.jsx */ 304);
+	var ComicListItem = __webpack_require__(/*! ../comicListItem/widget.jsx */ 289);
 	
 	module.exports = _react2.default.createClass({
 	    displayName: 'exports',
@@ -45704,7 +45704,7 @@
 	});
 
 /***/ },
-/* 302 */
+/* 287 */
 /*!************************************************!*\
   !*** ./src/js/components/comicList/widget.css ***!
   \************************************************/
@@ -45713,7 +45713,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 303);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 288);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45733,7 +45733,7 @@
 	}
 
 /***/ },
-/* 303 */
+/* 288 */
 /*!***************************************************************!*\
   !*** ./~/css-loader!./src/js/components/comicList/widget.css ***!
   \***************************************************************/
@@ -45750,7 +45750,7 @@
 
 
 /***/ },
-/* 304 */
+/* 289 */
 /*!****************************************************!*\
   !*** ./src/js/components/comicListItem/widget.jsx ***!
   \****************************************************/
@@ -45766,9 +45766,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 305);
+	__webpack_require__(/*! ./widget.css */ 290);
 	
-	var ComicDetail = __webpack_require__(/*! ../comicDetail/widget.jsx */ 307);
+	var ComicDetail = __webpack_require__(/*! ../comicDetail/widget.jsx */ 292);
 	
 	module.exports = _react2.default.createClass({
 		displayName: 'exports',
@@ -45787,18 +45787,18 @@
 				self.setState({ mode: 'collapsed' });
 			}
 		},
-		handleWidgetState: function handleWidgetState() {
+		isCollapsed: function isCollapsed() {
 			var self = this,
-			    comic = self.props.comic;
-	
-			if (this.state.mode == 'collapsed') {
-				return;
+			    state = self.state;
+			if (state.mode == 'collapsed') {
+				return 'hidden';
 			} else {
-				return _react2.default.createElement(ComicDetail, { comic: comic });
-			}
+				return '';
+			};
 		},
 		render: function render() {
 			var self = this,
+			    state = self.state,
 			    comic = self.props.comic;
 			return _react2.default.createElement(
 				'div',
@@ -45806,13 +45806,17 @@
 				comic.seriesTitle,
 				' #',
 				comic.issueNumber,
-				this.handleWidgetState()
+				_react2.default.createElement(
+					'div',
+					{ className: self.isCollapsed() },
+					_react2.default.createElement(ComicDetail, { comic: comic })
+				)
 			);
 		}
 	});
 
 /***/ },
-/* 305 */
+/* 290 */
 /*!****************************************************!*\
   !*** ./src/js/components/comicListItem/widget.css ***!
   \****************************************************/
@@ -45821,7 +45825,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 306);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 291);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45841,7 +45845,7 @@
 	}
 
 /***/ },
-/* 306 */
+/* 291 */
 /*!*******************************************************************!*\
   !*** ./~/css-loader!./src/js/components/comicListItem/widget.css ***!
   \*******************************************************************/
@@ -45858,7 +45862,7 @@
 
 
 /***/ },
-/* 307 */
+/* 292 */
 /*!**************************************************!*\
   !*** ./src/js/components/comicDetail/widget.jsx ***!
   \**************************************************/
@@ -45874,7 +45878,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 308);
+	__webpack_require__(/*! ./widget.css */ 293);
 	
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
@@ -45892,7 +45896,7 @@
 	});
 
 /***/ },
-/* 308 */
+/* 293 */
 /*!**************************************************!*\
   !*** ./src/js/components/comicDetail/widget.css ***!
   \**************************************************/
@@ -45901,7 +45905,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 309);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 294);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45921,7 +45925,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 294 */
 /*!*****************************************************************!*\
   !*** ./~/css-loader!./src/js/components/comicDetail/widget.css ***!
   \*****************************************************************/
@@ -45938,7 +45942,7 @@
 
 
 /***/ },
-/* 310 */
+/* 295 */
 /*!*************************************************!*\
   !*** ./src/js/components/loadScreen/widget.jsx ***!
   \*************************************************/
@@ -45954,7 +45958,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 311);
+	__webpack_require__(/*! ./widget.css */ 296);
 	
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
@@ -45969,7 +45973,7 @@
 	});
 
 /***/ },
-/* 311 */
+/* 296 */
 /*!*************************************************!*\
   !*** ./src/js/components/loadScreen/widget.css ***!
   \*************************************************/
@@ -45978,7 +45982,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 312);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 297);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45998,7 +46002,7 @@
 	}
 
 /***/ },
-/* 312 */
+/* 297 */
 /*!****************************************************************!*\
   !*** ./~/css-loader!./src/js/components/loadScreen/widget.css ***!
   \****************************************************************/
@@ -46013,22 +46017,6 @@
 	
 	// exports
 
-
-/***/ },
-/* 313 */
-/*!***************************************************!*\
-  !*** ./src/js/utils/extensions/dateExtensions.js ***!
-  \***************************************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Date.prototype.yyyymmdd = function () {
-	    var yyyy = this.getFullYear().toString();
-	    var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
-	    var dd = this.getDate().toString();
-	    return yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]); // padding
-	};
 
 /***/ }
 /******/ ]);
