@@ -1,3 +1,4 @@
-require("./css/pullr.css");
-
-var pullr = require("expose?pullr!./js/pullr.jsx");
+require('./src/css/pullr.css');
+require('expose?$!jquery');
+require('expose?jQuery!jquery');
+require('expose?pullr!./src/js/pullr.jsx');

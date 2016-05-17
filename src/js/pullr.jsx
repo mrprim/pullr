@@ -1,14 +1,17 @@
-﻿var users = require("./users.js");
-var _comictypes = {
-    trades: ["TPB","HC","SC","HC/SC","Volume","Vol.","GN"]
-};
+﻿import React from 'react';
+import {render} from 'react-dom';
 
-var pullr = {};
-pullr.api = require('./api.js');
+var $ = require('jquery'),
+    PullrApp = require('./widgets/pullrApp/widget.jsx');
+
+render(<PullrApp/>, document.getElementById('pullr'));
+
+//pullr.api = require('./api.js');
 
 
-require('./widgets/comicList.js');
+//require('./widgets/comicList.js');
 
+/*
 $.fn.pullr = function(options) {
     var self = this,
         opts = $.extend({}, $.fn.pullr.defaults, options);
@@ -17,17 +20,17 @@ $.fn.pullr = function(options) {
         self.addClass('pullr');
         buildList();
         load();
-    };
+    }
 
     function buildList() {
         self.list = $('<div/>').comicList().appendTo(self);
-    };
+    }
 
     function load(storeDate) {
         pullr.api.getComics(storeDate).done(function(resp) {
             self.list.set();
         });
-    };
+    }
 
     build();
 
@@ -35,6 +38,7 @@ $.fn.pullr = function(options) {
 };
 
 $.fn.pullr.defaults = {};
+*/
 
 module.exports = pullr;
 /*

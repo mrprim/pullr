@@ -1,4 +1,5 @@
-var api = api || {},
+var $ = require('jquery'),
+    api = api || {},
     apiDefaults = {
         apiBaseUrl: "https://www.comicvine.com/api/issues/?",
         apiKey: "bbcc02c540fae8bc000887561a696eb2a0a851f9",
@@ -60,9 +61,19 @@ api.getComics = function(storeDate, options) {
             getData(page + 1);
         } else {
             processFinalData();
-            dfd.resolve(comics);
+            dfd.resolve(comics.sort(sortBySeriesTitle));
         }
-    };
+    }
+
+    function sortBySeriesTitle(a,b) {
+        if(a.seriesTitle < b.seriesTitle) {
+            return -1;
+        }
+        if(a.seriesTitle > b.seriesTitle) {
+            return 1;
+        }
+        return 0;
+    }
 
     function handleError(err) {
         console.log(err);
@@ -82,7 +93,7 @@ api.getComics = function(storeDate, options) {
                 issueNumber: oComic.issue_number,
                 issueTitle: oComic.name,
                 description: oComic.description,
-                thumbnailUrl: 'http://static.comicvine.com/' + oComic.image.icon_url,
+                thumbnailUrl: oComic.image.icon_url,
                 link: oComic.site_detail_url
             }
             comics.push(comic);
