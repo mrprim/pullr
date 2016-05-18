@@ -4,14 +4,23 @@ import {render} from 'react-dom';
 require('./widget.css');
 
 module.exports = React.createClass({
-  render: function() {
-  	var comic = this.props.comic;
+	loadImage: function() {
+		var self = this,
+			props = self.props;
+		if(props.imageLoaded) {
+			return <img className="thumbnail" src={props.comic.thumbnailUrl}/>;
+		}
+	},
+	render: function() {
+  		var self = this,
+  			comic = this.props.comic;
 
-    return (
-        <div className="comicDetail">
-        	<img className="thumbnail" src={comic.thumbnailUrl}/>
-        	<div dangerouslySetInnerHTML={{__html: comic.description}}></div>
-        </div>
-    );
-  }
+    	return (
+        	<div className="comicDetail">
+        		{self.loadImage()}
+        		<div dangerouslySetInnerHTML={{__html: comic.description}}></div>
+        		}
+        	</div>
+    	);
+  	}
 });

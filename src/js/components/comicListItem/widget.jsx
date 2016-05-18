@@ -15,7 +15,7 @@ module.exports = React.createClass({
 		var self = this;
 
 		if(self.state.mode == 'collapsed') {
-			self.setState({mode:'expanded'});
+			self.setState({mode:'expanded', imageLoaded: true});
 		} else {
 			self.setState({mode: 'collapsed'});
 		}
@@ -82,7 +82,7 @@ module.exports = React.createClass({
 			    	{self.setIcons()}
 			    </div>
 		    	<div className={self.isCollapsed()}>
-			    	<ComicDetail comic={comic}/>
+			    	<ComicDetail comic={comic} imageLoaded={state.imageLoaded}/>
 			    </div>
 		    </div>
 		);
