@@ -1,4 +1,4 @@
-require('./utils/extensions/dateExtensions.js');
+require('../utils/extensions/dateExtensions.js');
 
 var $ = require('jquery'),
     moment = require('moment'),
@@ -15,7 +15,7 @@ var $ = require('jquery'),
         apiDataType: "jsonp"
     };
 
-api.getComics = function(storeDate, options) {
+api.getComics = function(user, storeDate, options) {
     storeDate = getStoreDate(storeDate);
     options = options || apiDefaults;
 
@@ -67,13 +67,18 @@ api.getComics = function(storeDate, options) {
 
     function handleSuccess(page, resp) {
         getTotalPages(resp);
+        if(totalPages === 0) {
+            console.log('No records returned.');
+            dfd.reject();
+            return;
+        }
         comicResponse = comicResponse.concat(resp.results);
 
         console.log('Data Retrieved - ' + page + '/' + totalPages)
         if(page < totalPages) {
             getData(page + 1);
         } else {
-            processFinalData();
+            processComics();
             dfd.resolve({
                 storeDate: storeDate,
                 comics: comics.sort(sortBySeriesTitle)
@@ -102,20 +107,48 @@ api.getComics = function(storeDate, options) {
         }
     };
 
-    function processFinalData() {
+    function processComics() {
         $.each(comicResponse, function(i, oComic) {
-            var comic = {
-                seriesTitle: oComic.volume.name,
-                issueNumber: oComic.issue_number,
-                issueTitle: oComic.name,
-                description: oComic.description,
-                thumbnailUrl: oComic.image.icon_url,
-                link: oComic.site_detail_url
-            }
+            var comic = mapComic(oComic);
+            markUserInfo(comic);
             comics.push(comic);
+        });
+    };
+
+    function mapComic(comic) {
+        return {
+            seriesTitle: comic.volume.name,
+            issueNumber: comic.issue_number,
+            issueTitle: comic.name,
+            description: comic.description,
+            thumbnailUrl: comic.image.icon_url,
+            link: comic.site_detail_url
+        };
+    };
+
+    function markUserInfo(comic) {
+        markSavedComic(comic);
+        markSearchTerms(comic);
+    };
+
+    function markSavedComic(comic) {
+        $.each(user.comics, function(i, savedComic) {
+            if(comic.seriesTitle.toUpperCase() === savedComic.toUpperCase()) {
+                comic.saved = true;
+                return false;
+            }
         });
     }
 
+    function markSearchTerms(comic) {
+        $.each(user.searchTerms, function(i, searchTerm) {
+            var re = new RegExp(searchTerm, "i");
+            if(comic.seriesTitle.match(re)) {
+                comic.searched = true;
+                return false;
+            }
+        });
+    }
     getData();
 
     return dfd.promise();

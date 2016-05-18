@@ -13,3 +13,7 @@
 .comicListItem:hover {
 	background-color: #eee;
 }
+
+.comicListItem .icons {
+	float: right;
+}
