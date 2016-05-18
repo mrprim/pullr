@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 
 require('./widget.css');
 
-var api = require('../../api.js'),
+var api = require('../../data/comics.js'),
 	ComicList = require('../comicList/widget.jsx'),
 	loadScreen = require('../loadScreen/widget.jsx');
 

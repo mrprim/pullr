@@ -24425,7 +24425,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var $ = __webpack_require__(/*! jquery */ 6),
-	    PullrApp = __webpack_require__(/*! ./components/pullrApp/widget.jsx */ 298);
+	    PullrApp = __webpack_require__(/*! ./components/pullrApp/widget.jsx */ 281);
 	
 	(0, _reactDom.render)(_react2.default.createElement(PullrApp, null), document.getElementById('pullr'));
 	
@@ -45384,18 +45384,149 @@
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */
-/*!***********************!*\
-  !*** ./src/js/api.js ***!
-  \***********************/
+/* 281 */
+/*!***********************************************!*\
+  !*** ./src/js/components/pullrApp/widget.jsx ***!
+  \***********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(/*! ./utils/extensions/dateExtensions.js */ 313);
+	var _react = __webpack_require__(/*! react */ 114);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 146);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(/*! ./widget.css */ 282);
+	
+	var api = __webpack_require__(/*! ../../data/comics.js */ 284),
+	    ComicList = __webpack_require__(/*! ../comicList/widget.jsx */ 285),
+	    loadScreen = __webpack_require__(/*! ../loadScreen/widget.jsx */ 294);
+	
+	module.exports = _react2.default.createClass({
+		displayName: 'exports',
+	
+		getInitialState: function getInitialState() {
+			return {
+				appName: 'Pullr',
+				mode: 'loading'
+			};
+		},
+	
+		componentDidMount: function componentDidMount() {
+			var self = this;
+	
+			self.load();
+		},
+	
+		handleWidgetState: function handleWidgetState() {
+			var self = this,
+			    state = self.state;
+	
+			if (state.mode === 'loading') {
+				return _react2.default.createElement(
+					'h1',
+					null,
+					'LOADING'
+				);
+			} else {
+				return _react2.default.createElement(ComicList, { comics: state.comics });
+			}
+		},
+	
+		load: function load() {
+			var self = this;
+	
+			api.getComics().done(function (resp) {
+				self.setState({
+					storeDate: resp.storeDate,
+					comics: resp.comics,
+					mode: 'list'
+				});
+			});
+		},
+	
+		render: function render() {
+			var self = this,
+			    state = self.state;
+	
+			return _react2.default.createElement(
+				'div',
+				{ className: 'pullrApp' },
+				_react2.default.createElement(
+					'h1',
+					null,
+					state.appName
+				),
+				_react2.default.createElement(
+					'h3',
+					null,
+					state.storeDate
+				),
+				self.handleWidgetState()
+			);
+		}
+	});
+
+/***/ },
+/* 282 */
+/*!***********************************************!*\
+  !*** ./src/js/components/pullrApp/widget.css ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 283);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./widget.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./widget.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 283 */
+/*!**************************************************************!*\
+  !*** ./~/css-loader!./src/js/components/pullrApp/widget.css ***!
+  \**************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".pullrApp {\n\n}", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 284 */
+/*!*******************************!*\
+  !*** ./src/js/data/comics.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	__webpack_require__(/*! ../utils/extensions/dateExtensions.js */ 297);
 	
 	var $ = __webpack_require__(/*! jquery */ 6),
 	    moment = __webpack_require__(/*! moment */ 9),
@@ -45521,154 +45652,7 @@
 	module.exports = api;
 
 /***/ },
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */
-/*!***********************************************!*\
-  !*** ./src/js/components/pullrApp/widget.jsx ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(/*! react */ 114);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 146);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	__webpack_require__(/*! ./widget.css */ 299);
-	
-	var api = __webpack_require__(/*! ../../api.js */ 284),
-	    ComicList = __webpack_require__(/*! ../comicList/widget.jsx */ 301),
-	    loadScreen = __webpack_require__(/*! ../loadScreen/widget.jsx */ 310);
-	
-	module.exports = _react2.default.createClass({
-		displayName: 'exports',
-	
-		getInitialState: function getInitialState() {
-			return {
-				appName: 'Pullr',
-				mode: 'loading'
-			};
-		},
-	
-		componentDidMount: function componentDidMount() {
-			var self = this;
-	
-			self.load();
-		},
-	
-		handleWidgetState: function handleWidgetState() {
-			var self = this,
-			    state = self.state;
-	
-			if (state.mode === 'loading') {
-				return _react2.default.createElement(
-					'h1',
-					null,
-					'LOADING'
-				);
-			} else {
-				return _react2.default.createElement(ComicList, { comics: state.comics });
-			}
-		},
-	
-		load: function load() {
-			var self = this;
-	
-			api.getComics().done(function (resp) {
-				self.setState({
-					storeDate: resp.storeDate,
-					comics: resp.comics,
-					mode: 'list'
-				});
-			});
-		},
-	
-		render: function render() {
-			var self = this,
-			    state = self.state;
-	
-			return _react2.default.createElement(
-				'div',
-				{ className: 'pullrApp' },
-				_react2.default.createElement(
-					'h1',
-					null,
-					state.appName
-				),
-				_react2.default.createElement(
-					'h3',
-					null,
-					state.storeDate
-				),
-				self.handleWidgetState()
-			);
-		}
-	});
-
-/***/ },
-/* 299 */
-/*!***********************************************!*\
-  !*** ./src/js/components/pullrApp/widget.css ***!
-  \***********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 300);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./widget.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./widget.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 300 */
-/*!**************************************************************!*\
-  !*** ./~/css-loader!./src/js/components/pullrApp/widget.css ***!
-  \**************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".pullrApp {\n\n}", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 301 */
+/* 285 */
 /*!************************************************!*\
   !*** ./src/js/components/comicList/widget.jsx ***!
   \************************************************/
@@ -45684,9 +45668,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 302);
+	__webpack_require__(/*! ./widget.css */ 286);
 	
-	var ComicListItem = __webpack_require__(/*! ../comicListItem/widget.jsx */ 304);
+	var ComicListItem = __webpack_require__(/*! ../comicListItem/widget.jsx */ 288);
 	
 	module.exports = _react2.default.createClass({
 	    displayName: 'exports',
@@ -45704,7 +45688,7 @@
 	});
 
 /***/ },
-/* 302 */
+/* 286 */
 /*!************************************************!*\
   !*** ./src/js/components/comicList/widget.css ***!
   \************************************************/
@@ -45713,7 +45697,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 303);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 287);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45733,7 +45717,7 @@
 	}
 
 /***/ },
-/* 303 */
+/* 287 */
 /*!***************************************************************!*\
   !*** ./~/css-loader!./src/js/components/comicList/widget.css ***!
   \***************************************************************/
@@ -45750,7 +45734,7 @@
 
 
 /***/ },
-/* 304 */
+/* 288 */
 /*!****************************************************!*\
   !*** ./src/js/components/comicListItem/widget.jsx ***!
   \****************************************************/
@@ -45766,9 +45750,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 305);
+	__webpack_require__(/*! ./widget.css */ 289);
 	
-	var ComicDetail = __webpack_require__(/*! ../comicDetail/widget.jsx */ 307);
+	var ComicDetail = __webpack_require__(/*! ../comicDetail/widget.jsx */ 291);
 	
 	module.exports = _react2.default.createClass({
 		displayName: 'exports',
@@ -45812,7 +45796,7 @@
 	});
 
 /***/ },
-/* 305 */
+/* 289 */
 /*!****************************************************!*\
   !*** ./src/js/components/comicListItem/widget.css ***!
   \****************************************************/
@@ -45821,7 +45805,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 306);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 290);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45841,7 +45825,7 @@
 	}
 
 /***/ },
-/* 306 */
+/* 290 */
 /*!*******************************************************************!*\
   !*** ./~/css-loader!./src/js/components/comicListItem/widget.css ***!
   \*******************************************************************/
@@ -45858,7 +45842,7 @@
 
 
 /***/ },
-/* 307 */
+/* 291 */
 /*!**************************************************!*\
   !*** ./src/js/components/comicDetail/widget.jsx ***!
   \**************************************************/
@@ -45874,7 +45858,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 308);
+	__webpack_require__(/*! ./widget.css */ 292);
 	
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
@@ -45892,7 +45876,7 @@
 	});
 
 /***/ },
-/* 308 */
+/* 292 */
 /*!**************************************************!*\
   !*** ./src/js/components/comicDetail/widget.css ***!
   \**************************************************/
@@ -45901,7 +45885,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 309);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 293);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45921,7 +45905,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 293 */
 /*!*****************************************************************!*\
   !*** ./~/css-loader!./src/js/components/comicDetail/widget.css ***!
   \*****************************************************************/
@@ -45938,7 +45922,7 @@
 
 
 /***/ },
-/* 310 */
+/* 294 */
 /*!*************************************************!*\
   !*** ./src/js/components/loadScreen/widget.jsx ***!
   \*************************************************/
@@ -45954,7 +45938,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./widget.css */ 311);
+	__webpack_require__(/*! ./widget.css */ 295);
 	
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
@@ -45969,7 +45953,7 @@
 	});
 
 /***/ },
-/* 311 */
+/* 295 */
 /*!*************************************************!*\
   !*** ./src/js/components/loadScreen/widget.css ***!
   \*************************************************/
@@ -45978,7 +45962,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 312);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 296);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -45998,7 +45982,7 @@
 	}
 
 /***/ },
-/* 312 */
+/* 296 */
 /*!****************************************************************!*\
   !*** ./~/css-loader!./src/js/components/loadScreen/widget.css ***!
   \****************************************************************/
@@ -46015,7 +45999,7 @@
 
 
 /***/ },
-/* 313 */
+/* 297 */
 /*!***************************************************!*\
   !*** ./src/js/utils/extensions/dateExtensions.js ***!
   \***************************************************/
