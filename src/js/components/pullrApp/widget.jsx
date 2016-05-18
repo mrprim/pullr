@@ -29,7 +29,7 @@ module.exports = React.createClass({
 		if(state.mode === 'loading') {
 			return <h1>LOADING</h1>
 		} else {
-			return <ComicList comics={state.comics} filter={state.filter} toggleMine={self.toggleMine}/>;
+			return <ComicList {...state} toggleMine={self.toggleMine}/>;
 		}
 	},
 
