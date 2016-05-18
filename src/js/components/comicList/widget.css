@@ -1,0 +1,7 @@
+.comicList.mine .comicListItem {
+	display: none;
+}
+.comicList.mine .comicListItem.saved, 
+.comicList.mine .comicListItem.searched {
+	display: block;
+}

@@ -45402,7 +45402,7 @@
 	
 	__webpack_require__(/*! ./widget.css */ 282);
 	
-	var api = __webpack_require__(/*! ../../data/comics.js */ 284),
+	var api = __webpack_require__(/*! ../../data/api.js */ 299),
 	    ComicList = __webpack_require__(/*! ../comicList/widget.jsx */ 286),
 	    loadScreen = __webpack_require__(/*! ../loadScreen/widget.jsx */ 295);
 	
@@ -45412,7 +45412,8 @@
 		getInitialState: function getInitialState() {
 			return {
 				appName: 'Pullr',
-				mode: 'loading'
+				mode: 'loading',
+				filter: 'mine'
 			};
 		},
 	
@@ -45433,20 +45434,58 @@
 					'LOADING'
 				);
 			} else {
-				return _react2.default.createElement(ComicList, { comics: state.comics });
+				return _react2.default.createElement(ComicList, { comics: state.comics, filter: state.filter, toggleMine: self.toggleMine });
 			}
 		},
 	
 		load: function load() {
 			var self = this;
 	
-			api.getComics().done(function (resp) {
-				self.setState({
-					storeDate: resp.storeDate,
-					comics: resp.comics,
-					mode: 'list'
+			self.setState({ mode: 'loading' });
+			self.loadUser().done(function (user) {
+				self.loadComics(user).done(function () {
+					self.setState({ mode: 'list' });
 				});
 			});
+		},
+	
+		loadUser: function loadUser(id) {
+			id = id || 1;
+			var self = this;
+	
+			return api.users.getUser(id).done(function (resp) {
+				self.setState({
+					user: resp
+				});
+			});
+		},
+	
+		loadComics: function loadComics(user) {
+			var self = this;
+	
+			return api.comics.getComics(user).done(function (resp) {
+				self.setState({
+					storeDate: resp.storeDate,
+					comics: resp.comics
+				});
+			});
+		},
+	
+		getClass: function getClass() {
+			var self = this,
+			    className = "pullrApp";
+	
+			return className;
+		},
+	
+		toggleMine: function toggleMine() {
+			var self = this;
+	
+			if (self.state.filter === 'mine') {
+				self.setState({ filter: null });
+			} else {
+				self.setState({ filter: 'mine' });
+			}
 		},
 	
 		render: function render() {
@@ -45455,7 +45494,7 @@
 	
 			return _react2.default.createElement(
 				'div',
-				{ className: 'pullrApp' },
+				{ className: self.getClass() },
 				_react2.default.createElement(
 					'h1',
 					null,
@@ -45512,7 +45551,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".pullrApp {\n\n}", ""]);
+	exports.push([module.id, ".pullrApp {\n\n}\n\n.pullrApp.mine .comicListItem {\n\tdisplay: none;\n}\n.pullrApp.mine .comicListItem.saved, \n.pullrApp.mine .comicListItem.searched {\n\tdisplay: block;\n}", ""]);
 	
 	// exports
 
@@ -45543,7 +45582,7 @@
 	    apiDataType: "jsonp"
 	};
 	
-	api.getComics = function (storeDate, options) {
+	api.getComics = function (user, storeDate, options) {
 	    storeDate = getStoreDate(storeDate);
 	    options = options || apiDefaults;
 	
@@ -45595,13 +45634,18 @@
 	
 	    function handleSuccess(page, resp) {
 	        getTotalPages(resp);
+	        if (totalPages === 0) {
+	            console.log('No records returned.');
+	            dfd.reject();
+	            return;
+	        }
 	        comicResponse = comicResponse.concat(resp.results);
 	
 	        console.log('Data Retrieved - ' + page + '/' + totalPages);
 	        if (page < totalPages) {
 	            getData(page + 1);
 	        } else {
-	            processFinalData();
+	            processComics();
 	            dfd.resolve({
 	                storeDate: storeDate,
 	                comics: comics.sort(sortBySeriesTitle)
@@ -45630,20 +45674,48 @@
 	        }
 	    };
 	
-	    function processFinalData() {
+	    function processComics() {
 	        $.each(comicResponse, function (i, oComic) {
-	            var comic = {
-	                seriesTitle: oComic.volume.name,
-	                issueNumber: oComic.issue_number,
-	                issueTitle: oComic.name,
-	                description: oComic.description,
-	                thumbnailUrl: oComic.image.icon_url,
-	                link: oComic.site_detail_url
-	            };
+	            var comic = mapComic(oComic);
+	            markUserInfo(comic);
 	            comics.push(comic);
+	        });
+	    };
+	
+	    function mapComic(comic) {
+	        return {
+	            seriesTitle: comic.volume.name,
+	            issueNumber: comic.issue_number,
+	            issueTitle: comic.name,
+	            description: comic.description,
+	            thumbnailUrl: comic.image.icon_url,
+	            link: comic.site_detail_url
+	        };
+	    };
+	
+	    function markUserInfo(comic) {
+	        markSavedComic(comic);
+	        markSearchTerms(comic);
+	    };
+	
+	    function markSavedComic(comic) {
+	        $.each(user.comics, function (i, savedComic) {
+	            if (comic.seriesTitle.toUpperCase() === savedComic.toUpperCase()) {
+	                comic.saved = true;
+	                return false;
+	            }
 	        });
 	    }
 	
+	    function markSearchTerms(comic) {
+	        $.each(user.searchTerms, function (i, searchTerm) {
+	            var re = new RegExp(searchTerm, "i");
+	            if (comic.seriesTitle.match(re)) {
+	                comic.searched = true;
+	                return false;
+	            }
+	        });
+	    }
 	    getData();
 	
 	    return dfd.promise();
@@ -45686,18 +45758,33 @@
 	
 	__webpack_require__(/*! ./widget.css */ 287);
 	
-	var ComicListItem = __webpack_require__(/*! ../comicListItem/widget.jsx */ 289);
+	var ComicListItem = __webpack_require__(/*! ../comicListItem/widget.jsx */ 289),
+	    ComicListControls = __webpack_require__(/*! ../comicListControls/widget.jsx */ 300);
 	
 	module.exports = _react2.default.createClass({
 	    displayName: 'exports',
 	
+	    getClass: function getClass() {
+	        var self = this,
+	            props = self.props,
+	            className = 'comicList';
+	
+	        if (props.filter) {
+	            className += ' ' + props.filter;
+	        }
+	
+	        return className;
+	    },
+	
 	    render: function render() {
-	        var comics = this.props.comics.map(function (comic, i) {
+	        var self = this,
+	            comics = self.props.comics.map(function (comic, i) {
 	            return _react2.default.createElement(ComicListItem, { key: i, comic: comic });
 	        });
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'comicList' },
+	            { className: self.getClass() },
+	            _react2.default.createElement(ComicListControls, { toggleMine: self.props.toggleMine }),
 	            comics
 	        );
 	    }
@@ -45744,7 +45831,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".comicList.mine .comicListItem {\n\tdisplay: none;\n}\n.comicList.mine .comicListItem.saved, \n.comicList.mine .comicListItem.searched {\n\tdisplay: block;\n}", ""]);
 	
 	// exports
 
@@ -45796,16 +45883,67 @@
 				return '';
 			};
 		},
+	
+		setIcons: function setIcons() {
+			var self = this,
+			    comic = self.props.comic,
+			    icons = [];
+	
+			if (comic.issueNumber == 1) {
+				icons.push(_react2.default.createElement(
+					'span',
+					null,
+					'#1'
+				));
+			}
+	
+			if (comic.saved) {
+				icons.push(_react2.default.createElement('span', { className: 'fa fa-star' }));
+			}
+	
+			if (comic.searched) {
+				icons.push(_react2.default.createElement('span', { className: 'fa fa-search' }));
+			}
+	
+			return icons;
+		},
+	
+		setClass: function setClass() {
+			var self = this,
+			    comic = self.props.comic,
+			    className = 'comicListItem';
+	
+			if (comic.issueNumber == 1) {
+				className += ' number-one';
+			}
+	
+			if (comic.saved) {
+				className += ' saved';
+			}
+	
+			if (comic.searched) {
+				className += ' searched';
+			}
+	
+			return className;
+		},
+	
 		render: function render() {
 			var self = this,
 			    state = self.state,
 			    comic = self.props.comic;
+	
 			return _react2.default.createElement(
 				'div',
-				{ className: 'comicListItem', onClick: this.handleClick },
+				{ className: self.setClass(), onClick: self.handleClick },
 				comic.seriesTitle,
 				' #',
 				comic.issueNumber,
+				_react2.default.createElement(
+					'div',
+					{ className: 'icons' },
+					self.setIcons()
+				),
 				_react2.default.createElement(
 					'div',
 					{ className: self.isCollapsed() },
@@ -45856,7 +45994,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".comicListItem {\n\tborder-left: solid 1px black;\n\tborder-right: solid 1px black;\n\tborder-bottom: solid 1px black;\n\tpadding: 1em;\n\tcursor: pointer;\n}\n\n.comicListItem:first-child {\n\tborder-top: solid 1px black;\n}\n\n.comicListItem:hover {\n\tbackground-color: #eee;\n}", ""]);
+	exports.push([module.id, ".comicListItem {\n\tborder-left: solid 1px black;\n\tborder-right: solid 1px black;\n\tborder-bottom: solid 1px black;\n\tpadding: 1em;\n\tcursor: pointer;\n}\n\n.comicListItem:first-child {\n\tborder-top: solid 1px black;\n}\n\n.comicListItem:hover {\n\tbackground-color: #eee;\n}\n\n.comicListItem .icons {\n\tfloat: right;\n}", ""]);
 	
 	// exports
 
@@ -46006,6 +46144,154 @@
 /*!****************************************************************!*\
   !*** ./~/css-loader!./src/js/components/loadScreen/widget.css ***!
   \****************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 298 */
+/*!******************************!*\
+  !*** ./src/js/data/users.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var $ = __webpack_require__(/*! jquery */ 6),
+	    api = api || {},
+	    users = [{
+	    id: 1,
+	    firstName: "Sergio",
+	    lastName: "Rodriguez",
+	    role: "Admin",
+	    searchTerms: ["Unwritten", "B.P.R.D.", "Creepy", "Abe Sapien", "Hellboy", "Atomic Robo", "Witch", "Adr", "Action"],
+	    comics: ["Ghost Racers", "Inhumans", "Thors", "ActionVerse"]
+	}, {
+	    id: 2,
+	    firstName: "Steele",
+	    lastName: "Simpson",
+	    role: "User",
+	    searchTerms: ["Sonja", "Deadpool", "Thor", "Conan", "Loki", "Turtles"],
+	    comics: ["Weirdworld", "Deadpool's Secret Secret Wars"]
+	}];
+	
+	api.getUsers = function () {
+	    var dfd = $.Deferred();
+	    dfd.resolve(users);
+	
+	    return dfd.promise();
+	};
+	
+	api.getUser = function (id) {
+	    var dfd = $.Deferred(),
+	        user;
+	    $.each(users, function (i, obj) {
+	        if (obj.id === id) {
+	            user = obj;
+	            return false;
+	        }
+	    });
+	    dfd.resolve(user);
+	    return dfd.promise();
+	};
+	
+	module.exports = api;
+
+/***/ },
+/* 299 */
+/*!****************************!*\
+  !*** ./src/js/data/api.js ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	module.exports = {
+		comics: __webpack_require__(/*! ./comics.js */ 284),
+		users: __webpack_require__(/*! ./users.js */ 298)
+	};
+
+/***/ },
+/* 300 */
+/*!********************************************************!*\
+  !*** ./src/js/components/comicListControls/widget.jsx ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(/*! react */ 114);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 146);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(/*! ./widget.css */ 301);
+	
+	module.exports = _react2.default.createClass({
+	    displayName: 'exports',
+	
+	    handleClick: function handleClick() {
+	        var self = this;
+	
+	        self.props.toggleMine();
+	    },
+	
+	    render: function render() {
+	        var self = this;
+	
+	        return _react2.default.createElement(
+	            'div',
+	            { onClick: self.handleClick },
+	            'Click Me'
+	        );
+	    }
+	});
+
+/***/ },
+/* 301 */
+/*!********************************************************!*\
+  !*** ./src/js/components/comicListControls/widget.css ***!
+  \********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./widget.css */ 302);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./widget.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./widget.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 302 */
+/*!***********************************************************************!*\
+  !*** ./~/css-loader!./src/js/components/comicListControls/widget.css ***!
+  \***********************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();

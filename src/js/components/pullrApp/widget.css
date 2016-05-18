@@ -1,3 +1,11 @@
 .pullrApp {
 
 }
+
+.pullrApp.mine .comicListItem {
+	display: none;
+}
+.pullrApp.mine .comicListItem.saved, 
+.pullrApp.mine .comicListItem.searched {
+	display: block;
+}
