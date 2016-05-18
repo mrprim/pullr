@@ -20,23 +20,25 @@ module.exports = React.createClass({
 			self.setState({mode: 'collapsed'});
 		}
 	},
-	handleWidgetState: function() {
+	isCollapsed: function() {
 		var self = this,
-			comic = self.props.comic;
-
-		if(this.state.mode == 'collapsed') {
-			return;
+			state = self.state;
+		if(state.mode == 'collapsed') {
+			return 'hidden';
 		} else {
-			return <ComicDetail comic={comic}/>;
-		}
+			return '';
+		};
 	},
 	render: function() {
 		var self = this,
+			state = self.state,
 			comic = self.props.comic;
 		return (
 		    <div className="comicListItem" onClick={this.handleClick}>
 		    	{comic.seriesTitle} #{comic.issueNumber}
-		    	{this.handleWidgetState()}
+		    	<div className={self.isCollapsed()}>
+			    	<ComicDetail comic={comic}/>
+			    </div>
 		    </div>
 		);
   }
