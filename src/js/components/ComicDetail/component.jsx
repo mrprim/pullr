@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-require('./widget.css');
+require('./component.css');
 
 module.exports = React.createClass({
 	loadImage: function() {

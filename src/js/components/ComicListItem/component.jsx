@@ -1,9 +1,9 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-require('./widget.css');
+require('./component.css');
 
-var ComicDetail = require('../comicDetail/widget.jsx');
+var ComicDetail = require('../ComicDetail/component.jsx');
 
 module.exports = React.createClass({
 	getInitialState: function(){
@@ -36,15 +36,15 @@ module.exports = React.createClass({
 			icons = [];
 
 		if(comic.issueNumber == 1) {
-			icons.push(<span>#1</span>);
+			icons.push(<span key="numberOne">#1</span>);
 		}
 
 		if(comic.saved) {
-			icons.push(<span className="fa fa-star"></span>);
+			icons.push(<span key="saved" className="fa fa-star"></span>);
 		} 
 
 		if (comic.searched) {
-			icons.push(<span className="fa fa-search"></span>);
+			icons.push(<span key="searched" className="fa fa-search"></span>);
 		}
 
 		return icons;

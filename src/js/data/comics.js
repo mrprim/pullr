@@ -2,6 +2,7 @@ require('../utils/extensions/dateExtensions.js');
 
 var $ = require('jquery'),
     moment = require('moment'),
+    sortComicsFuncs = require('../utils/sortComicsFuncs.js'),
     api = api || {},
     apiDefaults = {
         apiBaseUrl: "https://www.comicvine.com/api/issues/?",
@@ -81,19 +82,9 @@ api.getComics = function(user, storeDate, options) {
             processComics();
             dfd.resolve({
                 storeDate: storeDate,
-                comics: comics.sort(sortBySeriesTitle)
+                comics: comics.sort(sortComicsFuncs.sortByUserSearchAndSeriesTitle)
             });
         }
-    }
-
-    function sortBySeriesTitle(a,b) {
-        if(a.seriesTitle < b.seriesTitle) {
-            return -1;
-        }
-        if(a.seriesTitle > b.seriesTitle) {
-            return 1;
-        }
-        return 0;
     }
 
     function handleError(err) {
