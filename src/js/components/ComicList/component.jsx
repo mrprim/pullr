@@ -1,10 +1,10 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-require('./widget.css');
+require('./component.css');
 
-var ComicListItem = require('../comicListItem/widget.jsx'),
-    ComicListControls = require('../comicListControls/widget.jsx');
+var ComicListItem = require('../ComicListItem/component.jsx'),
+    ComicListControls = require('../ComicListControls/component.jsx');
 
 module.exports = React.createClass({
     getClass: function() {
@@ -21,12 +21,13 @@ module.exports = React.createClass({
 
     render: function() {
         var self = this,
-            comics = self.props.comics.map(function(comic, i) {
+            props = self.props,
+            comics = props.comics.map(function(comic, i) {
                 return <ComicListItem key={i} comic={comic}/>;
             });
         return (
             <div className={self.getClass()}>
-                <ComicListControls toggleMine={self.props.toggleMine}/>
+                <ComicListControls {...props}/>
                 {comics}
             </div>
         );

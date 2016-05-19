@@ -1,18 +1,19 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-require('./widget.css');
+require('./component.css');
 
 var api = require('../../data/api.js'),
-	ComicList = require('../comicList/widget.jsx'),
-	loadScreen = require('../loadScreen/widget.jsx');
+	ComicList = require('../ComicList/component.jsx'),
+	loadScreen = require('../LoadScreen/component.jsx'),
+	sortComicsFuncs = require('../../utils/sortComicsFuncs.js');
 
 module.exports = React.createClass({
 	getInitialState: function(){
 		return {
 			appName: 'Pullr',
 			mode: 'loading',
-			filter: 'mine'
+			sort: 'sortByUserSearchAndSeriesTitle'
 		}
 	},
 
@@ -20,17 +21,6 @@ module.exports = React.createClass({
 		var self = this;
 
 		self.load();
-	},
-
-	handleWidgetState: function() {
-		var self = this,
-			state = self.state;
-
-		if(state.mode === 'loading') {
-			return <h1>LOADING</h1>
-		} else {
-			return <ComicList comics={state.comics} filter={state.filter} toggleMine={self.toggleMine}/>;
-		}
 	},
 
 	load: function() {
@@ -73,13 +63,44 @@ module.exports = React.createClass({
 		return className;
 	},
 
-	toggleMine: function() {
+	setComicsFilter: function(filter) {
 		var self = this;
 
-		if(self.state.filter === 'mine') {
+		if(self.state.filter === filter) {
 			self.setState({filter: null});
 		} else {
-			self.setState({filter: 'mine'});			
+			self.setState({filter: filter});
+		}
+	},
+
+	setComicsSort: function(sortFuncName) {
+		var self = this,
+			comics = self.state.comics;
+
+		if(typeof sortComicsFuncs[sortFuncName] !== 'function') {
+			return;
+		}
+
+		if(self.state.sort === sortFuncName) {
+			self.setState({
+				comics: comics.reverse()
+			});
+		} else {
+			self.setState({
+				sort: sortFuncName, 
+				comics: comics.sort(sortComicsFuncs[sortFuncName])
+			});
+		}
+	},
+
+	handleLoadingState: function() {
+		var self = this,
+			state = self.state;
+
+		if(state.mode === 'loading') {
+			return <h1>LOADING</h1>
+		} else {
+			return <ComicList {...state} setComicsSort={self.setComicsSort} setComicsFilter={self.setComicsFilter}/>;
 		}
 	},
 
@@ -91,7 +112,7 @@ module.exports = React.createClass({
     		<div className={self.getClass()}>
 				<h1>{state.appName}</h1>
 				<h3>{state.storeDate}</h3>
-				{self.handleWidgetState()}
+				{self.handleLoadingState()}
 			</div>
     	);
   	}

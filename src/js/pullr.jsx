@@ -2,7 +2,7 @@
 import {render} from 'react-dom';
 
 var $ = require('jquery'),
-    PullrApp = require('./components/pullrApp/widget.jsx');
+    PullrApp = require('./components/PullrApp/component.jsx');
 
 render(<PullrApp/>, document.getElementById('pullr'));
 
