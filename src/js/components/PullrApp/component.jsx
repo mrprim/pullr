@@ -3,9 +3,11 @@ import {render} from 'react-dom';
 
 require('./component.css');
 
-var api = require('../../data/api.js'),
+var $ = require('jquery'),
+	api = require('../../data/api.js'),
 	ComicList = require('../ComicList/component.jsx'),
-	loadScreen = require('../LoadScreen/component.jsx'),
+	LoadScreen = require('../LoadScreen/component.jsx'),
+	ComicSearch = require('../ComicSearch/component.jsx'),
 	sortComicsFuncs = require('../../utils/sortComicsFuncs.js');
 
 module.exports = React.createClass({
@@ -63,6 +65,23 @@ module.exports = React.createClass({
 		return className;
 	},
 
+	search: function(searchTerm) {
+		var self = this,
+			comics = self.state.comics;
+
+		$.each(comics, function(i, comic) {
+            var re = new RegExp(searchTerm, "i");
+
+            if(comic.seriesTitle.match(re)) {
+                comic.hidden = false;
+            } else {
+            	comic.hidden = true;
+            }
+		});
+
+		self.setState({comics: comics});
+	},
+
 	setComicsFilter: function(filter) {
 		var self = this;
 
@@ -98,9 +117,14 @@ module.exports = React.createClass({
 			state = self.state;
 
 		if(state.mode === 'loading') {
-			return <h1>LOADING</h1>
+			return <LoadScreen/>
 		} else {
-			return <ComicList {...state} setComicsSort={self.setComicsSort} setComicsFilter={self.setComicsFilter}/>;
+			return (
+				<div>
+					<ComicSearch search={self.search}/>
+					<ComicList {...state} setComicsSort={self.setComicsSort} setComicsFilter={self.setComicsFilter}/>
+				</div>
+			)
 		}
 	},
 
