@@ -55,16 +55,20 @@ module.exports = React.createClass({
 			comic = self.props.comic,
 			className = 'comicListItem';
 
-		if(comic.issueNumber == 1) {
-			className += ' number-one';
-		}
+		if(comic.hidden) {
+			className += ' hidden';
+		} else {
+			if(comic.issueNumber == 1) {
+				className += ' number-one';
+			}
 
-		if(comic.saved) {
-			className += ' saved';
-		}
+			if(comic.saved) {
+				className += ' saved';
+			}
 
-		if (comic.searched) {
-			className += ' searched';
+			if (comic.searched) {
+				className += ' searched';
+			}			
 		}
 
 		return className;

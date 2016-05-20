@@ -45404,9 +45404,11 @@
 	
 	__webpack_require__(/*! ./component.css */ 282);
 	
-	var api = __webpack_require__(/*! ../../data/api.js */ 284),
+	var $ = __webpack_require__(/*! jquery */ 6),
+	    api = __webpack_require__(/*! ../../data/api.js */ 284),
 	    ComicList = __webpack_require__(/*! ../ComicList/component.jsx */ 289),
-	    loadScreen = __webpack_require__(/*! ../LoadScreen/component.jsx */ 299),
+	    LoadScreen = __webpack_require__(/*! ../LoadScreen/component.jsx */ 301),
+	    ComicSearch = __webpack_require__(/*! ../ComicSearch/component.jsx */ 304),
 	    sortComicsFuncs = __webpack_require__(/*! ../../utils/sortComicsFuncs.js */ 287);
 	
 	module.exports = _react2.default.createClass({
@@ -45466,6 +45468,23 @@
 			return className;
 		},
 	
+		search: function search(searchTerm) {
+			var self = this,
+			    comics = self.state.comics;
+	
+			$.each(comics, function (i, comic) {
+				var re = new RegExp(searchTerm, "i");
+	
+				if (comic.seriesTitle.match(re)) {
+					comic.hidden = false;
+				} else {
+					comic.hidden = true;
+				}
+			});
+	
+			self.setState({ comics: comics });
+		},
+	
 		setComicsFilter: function setComicsFilter(filter) {
 			var self = this;
 	
@@ -45501,13 +45520,14 @@
 			    state = self.state;
 	
 			if (state.mode === 'loading') {
-				return _react2.default.createElement(
-					'h1',
-					null,
-					'LOADING'
-				);
+				return _react2.default.createElement(LoadScreen, null);
 			} else {
-				return _react2.default.createElement(ComicList, _extends({}, state, { setComicsSort: self.setComicsSort, setComicsFilter: self.setComicsFilter }));
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(ComicSearch, { search: self.search }),
+					_react2.default.createElement(ComicList, _extends({}, state, { setComicsSort: self.setComicsSort, setComicsFilter: self.setComicsFilter }))
+				);
 			}
 		},
 	
@@ -45878,7 +45898,7 @@
 	
 	__webpack_require__(/*! ./component.css */ 290);
 	
-	var ComicListItem = __webpack_require__(/*! ../ComicListItem/component.jsx */ 304),
+	var ComicListItem = __webpack_require__(/*! ../ComicListItem/component.jsx */ 292),
 	    ComicListControls = __webpack_require__(/*! ../ComicListControls/component.jsx */ 298);
 	
 	module.exports = _react2.default.createClass({
@@ -45958,182 +45978,7 @@
 
 
 /***/ },
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */
-/*!***********************************************************!*\
-  !*** ./src/js/components/ComicListControls/component.jsx ***!
-  \***********************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(/*! react */ 114);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 146);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	__webpack_require__(/*! ./component.css */ 302);
-	
-	module.exports = _react2.default.createClass({
-	    displayName: 'exports',
-	
-	    handleFilterClick: function handleFilterClick(filter) {
-	        var self = this;
-	
-	        self.props.setComicsFilter(filter);
-	    },
-	
-	    handleSortClick: function handleSortClick(sortFuncName) {
-	        var self = this;
-	
-	        self.props.setComicsSort(sortFuncName);
-	    },
-	
-	    render: function render() {
-	        var self = this;
-	
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement('span', { className: 'fa fa-star', onClick: self.handleFilterClick.bind(self, 'mine') }),
-	            _react2.default.createElement('span', { className: 'fa fa-sort-alpha-asc', onClick: self.handleSortClick.bind(self, 'sortByUserSearchAndSeriesTitle') })
-	        );
-	    }
-	});
-
-/***/ },
-/* 299 */
-/*!****************************************************!*\
-  !*** ./src/js/components/LoadScreen/component.jsx ***!
-  \****************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(/*! react */ 114);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(/*! react-dom */ 146);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	__webpack_require__(/*! ./component.css */ 300);
-	
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'loadScreen' },
-	      'LOAD'
-	    );
-	  }
-	});
-
-/***/ },
-/* 300 */
-/*!****************************************************!*\
-  !*** ./src/js/components/LoadScreen/component.css ***!
-  \****************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 301);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./component.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./component.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 301 */
-/*!*******************************************************************!*\
-  !*** ./~/css-loader!./src/js/components/LoadScreen/component.css ***!
-  \*******************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 302 */
-/*!***********************************************************!*\
-  !*** ./src/js/components/ComicListControls/component.css ***!
-  \***********************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 303);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./component.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./component.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 303 */
-/*!**************************************************************************!*\
-  !*** ./~/css-loader!./src/js/components/ComicListControls/component.css ***!
-  \**************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 304 */
+/* 292 */
 /*!*******************************************************!*\
   !*** ./src/js/components/ComicListItem/component.jsx ***!
   \*******************************************************/
@@ -46149,9 +45994,9 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./component.css */ 305);
+	__webpack_require__(/*! ./component.css */ 293);
 	
-	var ComicDetail = __webpack_require__(/*! ../ComicDetail/component.jsx */ 307);
+	var ComicDetail = __webpack_require__(/*! ../ComicDetail/component.jsx */ 295);
 	
 	module.exports = _react2.default.createClass({
 		displayName: 'exports',
@@ -46209,16 +46054,20 @@
 			    comic = self.props.comic,
 			    className = 'comicListItem';
 	
-			if (comic.issueNumber == 1) {
-				className += ' number-one';
-			}
+			if (comic.hidden) {
+				className += ' hidden';
+			} else {
+				if (comic.issueNumber == 1) {
+					className += ' number-one';
+				}
 	
-			if (comic.saved) {
-				className += ' saved';
-			}
+				if (comic.saved) {
+					className += ' saved';
+				}
 	
-			if (comic.searched) {
-				className += ' searched';
+				if (comic.searched) {
+					className += ' searched';
+				}
 			}
 	
 			return className;
@@ -46250,7 +46099,7 @@
 	});
 
 /***/ },
-/* 305 */
+/* 293 */
 /*!*******************************************************!*\
   !*** ./src/js/components/ComicListItem/component.css ***!
   \*******************************************************/
@@ -46259,7 +46108,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 306);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 294);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -46279,7 +46128,7 @@
 	}
 
 /***/ },
-/* 306 */
+/* 294 */
 /*!**********************************************************************!*\
   !*** ./~/css-loader!./src/js/components/ComicListItem/component.css ***!
   \**********************************************************************/
@@ -46296,7 +46145,7 @@
 
 
 /***/ },
-/* 307 */
+/* 295 */
 /*!*****************************************************!*\
   !*** ./src/js/components/ComicDetail/component.jsx ***!
   \*****************************************************/
@@ -46312,7 +46161,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(/*! ./component.css */ 308);
+	__webpack_require__(/*! ./component.css */ 296);
 	
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
@@ -46339,7 +46188,7 @@
 	});
 
 /***/ },
-/* 308 */
+/* 296 */
 /*!*****************************************************!*\
   !*** ./src/js/components/ComicDetail/component.css ***!
   \*****************************************************/
@@ -46348,7 +46197,7 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 309);
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 297);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
@@ -46368,7 +46217,7 @@
 	}
 
 /***/ },
-/* 309 */
+/* 297 */
 /*!********************************************************************!*\
   !*** ./~/css-loader!./src/js/components/ComicDetail/component.css ***!
   \********************************************************************/
@@ -46380,6 +46229,259 @@
 	
 	// module
 	exports.push([module.id, ".comicListItem {\n\tborder-left: solid 1px black;\n\tborder-right: solid 1px black;\n\tborder-bottom: solid 1px black;\n\tpadding: 1em;\n}\n\n.comicListItem:first-child {\n\tborder-top: solid 1px black;\n}", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 298 */
+/*!***********************************************************!*\
+  !*** ./src/js/components/ComicListControls/component.jsx ***!
+  \***********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(/*! react */ 114);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 146);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(/*! ./component.css */ 299);
+	
+	module.exports = _react2.default.createClass({
+	    displayName: 'exports',
+	
+	    handleFilterClick: function handleFilterClick(filter) {
+	        var self = this;
+	
+	        self.props.setComicsFilter(filter);
+	    },
+	
+	    handleSortClick: function handleSortClick(sortFuncName) {
+	        var self = this;
+	
+	        self.props.setComicsSort(sortFuncName);
+	    },
+	
+	    render: function render() {
+	        var self = this;
+	
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('span', { className: 'fa fa-star', onClick: self.handleFilterClick.bind(self, 'mine') }),
+	            _react2.default.createElement('span', { className: 'fa fa-sort-alpha-asc', onClick: self.handleSortClick.bind(self, 'sortByUserSearchAndSeriesTitle') })
+	        );
+	    }
+	});
+
+/***/ },
+/* 299 */
+/*!***********************************************************!*\
+  !*** ./src/js/components/ComicListControls/component.css ***!
+  \***********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 300);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./component.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 300 */
+/*!**************************************************************************!*\
+  !*** ./~/css-loader!./src/js/components/ComicListControls/component.css ***!
+  \**************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 301 */
+/*!****************************************************!*\
+  !*** ./src/js/components/LoadScreen/component.jsx ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(/*! react */ 114);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 146);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(/*! ./component.css */ 302);
+	
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'loadScreen' },
+	      'LOAD'
+	    );
+	  }
+	});
+
+/***/ },
+/* 302 */
+/*!****************************************************!*\
+  !*** ./src/js/components/LoadScreen/component.css ***!
+  \****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 303);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./component.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 303 */
+/*!*******************************************************************!*\
+  !*** ./~/css-loader!./src/js/components/LoadScreen/component.css ***!
+  \*******************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 304 */
+/*!*****************************************************!*\
+  !*** ./src/js/components/ComicSearch/component.jsx ***!
+  \*****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(/*! react */ 114);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 146);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	__webpack_require__(/*! ./component.css */ 305);
+	
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	
+	  handleSearch: function handleSearch(event) {
+	    var self = this;
+	
+	    self.props.search(event.target.value);
+	  },
+	  render: function render() {
+	    var self = this;
+	
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'comicSearch' },
+	      _react2.default.createElement('input', { name: 'search', onChange: self.handleSearch })
+	    );
+	  }
+	});
+
+/***/ },
+/* 305 */
+/*!*****************************************************!*\
+  !*** ./src/js/components/ComicSearch/component.css ***!
+  \*****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(/*! !./../../../../~/css-loader!./component.css */ 306);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./component.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./component.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 306 */
+/*!********************************************************************!*\
+  !*** ./~/css-loader!./src/js/components/ComicSearch/component.css ***!
+  \********************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 3)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", ""]);
 	
 	// exports
 
