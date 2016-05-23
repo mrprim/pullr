@@ -95,7 +95,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".hidden {\n\tdisplay:none;\n}", ""]);
+	exports.push([module.id, "html {\n\tfont-family: Oswald;\n}\n.hidden {\n\tdisplay:none;\n}\n\n.spin {\n\tanimation: spin .5s forwards linear infinite;\n}\n\n.pulse {\n\tanimation: pulse 1s forwards infinite\n}\n\n@keyframes pulse {\n  0% { transform:scale(1.1); }\n  50% { transform:scale(0.9); }\n  100% { transform:scale(1.1); }\n}\n\n@keyframes spin {\n  from { transform:rotateZ(0deg); }\n  to { transform:rotateZ(360deg); }\n}", ""]);
 	
 	// exports
 
@@ -45416,7 +45416,6 @@
 	
 		getInitialState: function getInitialState() {
 			return {
-				appName: 'Pullr',
 				mode: 'loading',
 				sort: 'sortByUserSearchAndSeriesTitle'
 			};
@@ -45525,6 +45524,11 @@
 				return _react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(
+						'h3',
+						null,
+						state.storeDate
+					),
 					_react2.default.createElement(ComicSearch, { search: self.search }),
 					_react2.default.createElement(ComicList, _extends({}, state, { setComicsSort: self.setComicsSort, setComicsFilter: self.setComicsFilter }))
 				);
@@ -45538,16 +45542,6 @@
 			return _react2.default.createElement(
 				'div',
 				{ className: self.getClass() },
-				_react2.default.createElement(
-					'h1',
-					null,
-					state.appName
-				),
-				_react2.default.createElement(
-					'h3',
-					null,
-					state.storeDate
-				),
 				self.handleLoadingState()
 			);
 		}
@@ -46351,7 +46345,21 @@
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'loadScreen' },
-	      'LOAD'
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'title' },
+	        'Pullr'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'spinner spin' },
+	        _react2.default.createElement('span', { className: 'fa fa-circle-o-notch pulse' })
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'subtitle' },
+	        'Loading'
+	      )
 	    );
 	  }
 	});
@@ -46397,7 +46405,7 @@
 	
 	
 	// module
-	exports.push([module.id, "", ""]);
+	exports.push([module.id, ".loadScreen {\n\tposition: fixed;\n\ttop:0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\ttext-align: center;\n\tcolor: #eee;\n\tbackground: #45484d; /* Old browsers */\n\tbackground: -moz-linear-gradient(top, #45484d 0%, #000000 100%); /* FF3.6-15 */\n\tbackground: -webkit-linear-gradient(top, #45484d 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */\n\tbackground: linear-gradient(to bottom, #45484d 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n\tfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 );\n}\n\n.loadScreen .title {\n\tfont-size:3em;\n\tmargin-top: 150px;\n\tmargin-bottom:30px;\n}\n\n.loadScreen .spinner {\n\tfont-size:3em;\n}\n\n.loadScreen .subtitle {\n\tmargin-top:25px;\n}", ""]);
 	
 	// exports
 

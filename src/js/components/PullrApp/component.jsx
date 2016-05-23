@@ -13,7 +13,6 @@ var $ = require('jquery'),
 module.exports = React.createClass({
 	getInitialState: function(){
 		return {
-			appName: 'Pullr',
 			mode: 'loading',
 			sort: 'sortByUserSearchAndSeriesTitle'
 		}
@@ -121,6 +120,7 @@ module.exports = React.createClass({
 		} else {
 			return (
 				<div>
+					<h3>{state.storeDate}</h3>
 					<ComicSearch search={self.search}/>
 					<ComicList {...state} setComicsSort={self.setComicsSort} setComicsFilter={self.setComicsFilter}/>
 				</div>
@@ -134,8 +134,6 @@ module.exports = React.createClass({
 
     	return (
     		<div className={self.getClass()}>
-				<h1>{state.appName}</h1>
-				<h3>{state.storeDate}</h3>
 				{self.handleLoadingState()}
 			</div>
     	);
