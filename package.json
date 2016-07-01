@@ -33,7 +33,7 @@
   "scripts": {
     "start": "node ./server.js",
     "dev": "http-server | webpack -d --watch",
-    "build": "webpack -p | http-server"
+    "build": "webpack -p"
   },
   "devDependencies": {},
   "repository": {
