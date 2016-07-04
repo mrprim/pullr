@@ -1,4 +1,4 @@
-require('./src/css/pullr.css');
+require('./src/less/pullr.less');
 require('expose?$!jquery');
 require('expose?jQuery!jquery');
 require('expose?moment!moment');

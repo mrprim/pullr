@@ -10,6 +10,7 @@ module.exports = {
     module: {
         loaders: [
             {test: /\.css$/, loader: "style!css"},
+            {test: /\.less$/, loaders: ["style","css","less"]},
             {test : /\.jsx?/, include : APP_DIR, loader : 'babel'}
         ]
     },
