@@ -44802,14 +44802,16 @@
 	        return ret.yyyymmdd();
 	    };
 
-	    function getData(page) {
+	    function getData(page, res) {
 	        page = page || 1;
 
 	        var offset = (page - 1) * options.pageSize;
 
-	        return request(buildUrl(offset), function (err, resp, body) {
+	        request(buildUrl(offset), function (err, resp, body) {
+
 	            body = JSON.parse(body);
-	            return body;
+	            console.log(body);
+	            res.json(body);
 	        });
 	    };
 
