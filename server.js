@@ -7,7 +7,7 @@ app.use(express.static('static'));
 app.use(express.static('build'));
 
 app.get('/comics', function(req, res) {
-	api.users.getComics(1).done(function(resp) {
+	api.comics.getComics(1).done(function(resp) {
 		res.json(resp);
 	});
 });
