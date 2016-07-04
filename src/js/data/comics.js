@@ -40,16 +40,10 @@ api.getComics = function(user, storeDate, options) {
 
         var offset = ((page-1)*options.pageSize);
 
-        $.ajax({
-            url: buildUrl(offset),
-            dataformat: options.apiDataFormat,
-            dataType:options.apiDataType
-        }).done(function(resp) {
-            return resp;
-            //handleSuccess(page, resp);
-        }).fail(function(err) {
-            handleError(err);
-        });
+        request(buildUrl(offset), function(err, resp, body) {
+           body = JSON.parse(body);
+           return body;
+         });
     };
 
     function buildUrl(offset) {
