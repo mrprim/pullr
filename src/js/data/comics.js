@@ -1,6 +1,14 @@
 require('../utils/extensions/dateExtensions.js');
 var request = require('request');
 
+var apiOptions = {
+  url: 'https://api.github.com/repos/request/request',
+  headers: {
+    'User-Agent': 'request'
+  }
+};
+
+
 var $ = require('jquery'),
     moment = require('moment'),
     sortComicsFuncs = require('../utils/sortComicsFuncs.js'),
@@ -9,15 +17,16 @@ var $ = require('jquery'),
         apiBaseUrl: "https://www.comicvine.com/api/issues/?",
         apiKey: "bbcc02c540fae8bc000887561a696eb2a0a851f9",
         pageSize: 100,
-        apiFormat: "jsonp",
+        apiFormat: "json",
         apiSort: "volume:asc",
         apiJsonCallback: "?",
         apiCallback: "?",
         apiDataformat: "json",
-        apiDataType: "jsonp"
+        apiDataType: "json"
     };
 
-api.getComics = function(user, storeDate, options) {
+
+api.getComics = function(user, storeDate, options, callback) {
     storeDate = getStoreDate(storeDate);
     options = options || apiDefaults;
 
@@ -36,17 +45,13 @@ api.getComics = function(user, storeDate, options) {
         return ret.yyyymmdd();
     };
 
-    function getData(page, res) {
+    function getData(page) {
         page = page || 1;
 
         var offset = ((page-1)*options.pageSize);
+        apiOptions.url = buildUrl(offset);
 
-        request(buildUrl(offset), function(err, resp, body) {
-
-           body = JSON.parse(body);
-           console.log(body);
-           res.json(body);
-         });
+        return request(apiOptions, callback);
     };
 
     function buildUrl(offset) {
@@ -138,9 +143,7 @@ api.getComics = function(user, storeDate, options) {
             }
         });
     }
-    getData();
-
-    //return dfd.promise();
+    return getData();
 };
 
 module.exports = api;

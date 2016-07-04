@@ -7,7 +7,10 @@ app.use(express.static('static'));
 app.use(express.static('build'));
 
 app.get('/comics', function(req, res) {
-	api.comics.getComics(1, res);
+	api.comics.getComics(1, null, null, function(error,response,body) {
+
+		res.json(JSON.parse(body));
+	});
 });
 
 app.listen(process.env.PORT || 3000, function () {
