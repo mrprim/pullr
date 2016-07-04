@@ -4,6 +4,7 @@ var app = express();
 
 
 app.use(express.static('static'));
+app.use(express.static('build'));
 
 app.get('/test', function(req, res) {
 	res.json({message:'Hello World!'});
