@@ -6,7 +6,7 @@ app.get('/', function(req, res) {
 	res.json({message:'Hello World!'});
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Pullr is listening on port 3000!');
 });
 
