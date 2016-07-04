@@ -11,10 +11,18 @@ module.exports = {
         loaders: [
             {test: /\.css$/, loader: "style!css"},
             {test: /\.less$/, loaders: ["style","css","less"]},
-            {test : /\.jsx?/, include : APP_DIR, loader : 'babel'}
+            {test : /\.jsx?/, include : APP_DIR, loader : 'babel'},
+            {test : /\.json?/, loader : 'json'}
         ]
     },
     plugins: [
         new webpack.ProvidePlugin({$: 'jquery',jQuery: 'jquery'})
-    ]
+    ],
+    node: {
+      console: 'empty',
+      fs: 'empty',
+      net: 'empty',
+      tls: 'empty'
+    }
 };
+
