@@ -1,7 +1,7 @@
 var path = require('path');
 var express = require('express');
 var app = express();
-var api = require('./src/js/data/api.js'),
+var api = require('./src/js/data/api.js');
 
 app.use(express.static('static'));
 app.use(express.static('build'));
