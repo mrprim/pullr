@@ -1,13 +1,15 @@
 var path = require('path');
 var express = require('express');
 var app = express();
-
+var api = require('./src/js/data/api.js'),
 
 app.use(express.static('static'));
 app.use(express.static('build'));
 
-app.get('/test', function(req, res) {
-	res.json({message:'Hello World!'});
+app.get('/comics', function(req, res) {
+	api.users.getComics(1).done(function(resp) {
+		res.json(resp);
+	});
 });
 
 app.listen(process.env.PORT || 3000, function () {
