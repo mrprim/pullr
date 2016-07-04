@@ -41,7 +41,7 @@ api.getComics = function(user, storeDate, options) {
 
         var offset = ((page-1)*options.pageSize);
 
-        request(buildUrl(offset), function(err, resp, body) {
+        return request(buildUrl(offset), function(err, resp, body) {
            body = JSON.parse(body);
            return body;
          });
@@ -66,7 +66,7 @@ api.getComics = function(user, storeDate, options) {
         getTotalPages(resp);
         if(totalPages === 0) {
             console.log('No records returned.');
-            dfd.reject();
+//            dfd.reject();
             return;
         }
         comicResponse = comicResponse.concat(resp.results);
@@ -76,10 +76,10 @@ api.getComics = function(user, storeDate, options) {
             getData(page + 1);
         } else {
             processComics();
-            dfd.resolve({
-                storeDate: storeDate,
-                comics: comics.sort(sortComicsFuncs.sortByUserSearchAndSeriesTitle)
-            });
+//            dfd.resolve({
+//                storeDate: storeDate,
+ //               comics: comics.sort(sortComicsFuncs.sortByUserSearchAndSeriesTitle)
+ //           });
         }
     }
 
@@ -138,7 +138,7 @@ api.getComics = function(user, storeDate, options) {
     }
     getData();
 
-    return dfd.promise();
+    //return dfd.promise();
 };
 
 module.exports = api;
