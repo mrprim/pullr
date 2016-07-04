@@ -22,8 +22,8 @@ api.getComics = function(user, storeDate, options) {
 
     var comicResponse = [],
         comics = [],
-        totalPages,
-        dfd = $.Deferred();
+        totalPages;
+//        dfd = $.Deferred();
 
     function getStoreDate(date) {
         var ret = new Date(date||new Date());
@@ -45,7 +45,8 @@ api.getComics = function(user, storeDate, options) {
             dataformat: options.apiDataFormat,
             dataType:options.apiDataType
         }).done(function(resp) {
-            handleSuccess(page, resp);
+            return resp;
+            //handleSuccess(page, resp);
         }).fail(function(err) {
             handleError(err);
         });
